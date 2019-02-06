@@ -7,14 +7,13 @@ AllCops:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
-    - 'json_schema_converter.gemspec'
+    - 'jsonschema-generator.gemspec'
 
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
-
 
 RSpec/NestedGroups:
   Max: 4

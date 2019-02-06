@@ -1,15 +1,11 @@
 # frozen_string_literal: true
 
 require 'simplecov'
-require 'simplecov-lcov'
-SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
-SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
-SimpleCov.start do
-  add_filter(/^\/spec\//) # For RSpec
-  add_filter(/^\/test\//) # For Minitest
-end
+require 'simplecov-console'
 
-require 'undercover'
+SimpleCov.formatter = SimpleCov::Formatter::Console
+SimpleCov.minimum_coverage 100
+SimpleCov.start
 
 require 'bundler/setup'
 require 'jsonschema/generator'
