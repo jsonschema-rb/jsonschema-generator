@@ -1,4 +1,3 @@
-
 require: rubocop-rspec
 
 AllCops:
@@ -7,7 +6,7 @@ AllCops:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
-    - 'jsonschema-generator.gemspec'
+    - '*.gemspec'
 
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
