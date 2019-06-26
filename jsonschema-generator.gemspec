@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Alex Bykov']
   spec.email         = ['leksster@gmail.com']
 
-  spec.summary       = 'Write a short summary, because RubyGems requires one.'
-  spec.description   = 'Write a longer description or delete this line.'
+  spec.summary       = 'Generate JSON schema from JSON.'
+  spec.description   = 'Generate JSON schema from JSON.'
   spec.homepage      = 'https://github.com/jsonschema-rb/jsonschema-generator'
   spec.license       = 'MIT'
 
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   # to allow pushing to a single host or delete this
   # section to allow pushing to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
+    spec.metadata['allowed_push_host'] = 'https://rubygems.org/'
 
     spec.metadata['homepage_uri'] = spec.homepage
     spec.metadata['source_code_uri'] = 'https://github.com/jsonschema-rb/jsonschema-generator'

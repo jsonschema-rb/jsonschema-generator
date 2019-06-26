@@ -1,8 +1,6 @@
 # Jsonschema::Generator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/jsonschema/generator`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Generates jsonschema from json using [Draft-07](https://json-schema.org/draft-07/json-schema-release-notes.html) specification.
 
 ## Installation
 
@@ -22,7 +20,35 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'jsonschema-generator'
+
+input = {
+    first: 'first',
+    second: 2,
+    third: 'third',
+}.to_json
+
+Jsonschema::Generator::Draft07.new(input).call
+
+# output
+# {
+#     'title' => 'Root',
+#     'type' => 'object',
+#     'properties' => {
+#     'first' => {
+#         'type' => 'string',
+#     },
+#     'second' => {
+#         'type' => 'integer',
+#     },
+#     'third' => {
+#         'type' => 'string',
+#     },
+#     },
+#     'required' => %w[first second third],
+# }
+```
 
 ## Development
 
