@@ -6,6 +6,71 @@ RSpec.describe Jsonschema::Generator::Draft07 do
   let(:json) { {}.to_json }
 
   describe 'Success' do
+    context 'when json is array' do
+      let(:json) do
+        [
+          {
+            id: '1',
+            name: 'John',
+            roles: [
+              {
+                id: '1000',
+                name: 'admin',
+              },
+            ],
+          },
+          {
+            id: '2',
+            name: 'Doe',
+            roles: [
+              {
+                id: '1111',
+                name: 'moderator',
+              },
+            ],
+          },
+        ].to_json
+      end
+
+      let(:expected_schema) do
+        {
+          'title' => 'Root',
+          'type' => 'array',
+          'items' => {
+            'type' => 'object',
+            'properties' => {
+              'id' => {
+                'type' => 'string',
+              },
+              'name' => {
+                'type' => 'string',
+              },
+              'roles' => {
+                'type' => 'array',
+                'items' => {
+                  'type' => 'object',
+                  'properties' => {
+                    'id' => {
+                      'type' => 'string',
+                    },
+                    'name' => {
+                      'type' => 'string',
+                    },
+                  },
+                  'required' => %w[id name],
+                },
+              },
+            },
+            'required' => %w[id name roles],
+          },
+        }
+      end
+
+      it 'generates schema correctly' do
+        expect(generator).to match expected_schema
+      end
+    end
+
     context 'with simple case' do
       let(:json) do
         {
@@ -62,15 +127,19 @@ RSpec.describe Jsonschema::Generator::Draft07 do
           'properties' => {
             'nested1' => {
               'type' => 'object',
+              'required' => %w[nested2],
               'properties' => {
                 'nested2' => {
                   'type' => 'object',
+                  'required' => %w[nested3],
                   'properties' => {
                     'nested3' => {
                       'type' => 'object',
+                      'required' => %w[nested4],
                       'properties' => {
                         'nested4' => {
                           'type' => 'object',
+                          'required' => %w[nested5],
                           'properties' => {
                             'nested5' => {
                               'type' => 'string',
@@ -214,6 +283,7 @@ RSpec.describe Jsonschema::Generator::Draft07 do
               'type' => 'array',
               'items' => {
                 'type' => 'object',
+                'required' => %w[id name],
                 'properties' => {
                   'id' => {
                     'type' => 'integer',
@@ -268,14 +338,18 @@ RSpec.describe Jsonschema::Generator::Draft07 do
             },
             'nested' => {
               'type' => 'object',
+              'required' => ['object'],
               'properties' => {
                 'object' => {
+                  'required' => ['in'],
                   'type' => 'object',
                   'properties' => {
                     'in' => {
+                      'required' => ['other'],
                       'type' => 'object',
                       'properties' => {
                         'other' => {
+                          'required' => ['object'],
                           'type' => 'object',
                           'properties' => {
                             'object' => {

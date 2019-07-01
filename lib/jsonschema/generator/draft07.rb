@@ -15,11 +15,7 @@ module Jsonschema
       def call
         raise Error, 'Invalid Input. JSON expected' unless parsed_json
 
-        {
-          'title' => ROOT_TITLE,
-          'type' => 'object',
-          'required' => parsed_json.keys,
-        }.merge(generate(parsed_json))
+        { 'title' => ROOT_TITLE }.merge(generate(parsed_json))
       end
 
       private
@@ -44,7 +40,11 @@ module Jsonschema
       end
 
       def generate_object(hash)
-        params = { 'properties' => {}, 'type' => 'object' }
+        params = {
+          'properties' => {},
+          'type' => 'object',
+          'required' => hash.keys,
+        }
 
         hash.each_with_object(params) do |(key, value), memo|
           memo['properties'].merge!(Hash[key, generate(value)])
