@@ -36,15 +36,15 @@ Jsonschema::Generator::Draft07.new(input).call
 #     'title' => 'Root',
 #     'type' => 'object',
 #     'properties' => {
-#     'first' => {
-#         'type' => 'string',
-#     },
-#     'second' => {
-#         'type' => 'integer',
-#     },
-#     'third' => {
-#         'type' => 'string',
-#     },
+#         'first' => {
+#             'type' => 'string',
+#         },
+#         'second' => {
+#             'type' => 'integer',
+#         },
+#         'third' => {
+#             'type' => 'string',
+#         },
 #     },
 #     'required' => %w[first second third],
 # }
