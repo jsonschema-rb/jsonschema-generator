@@ -55,6 +55,7 @@ module Jsonschema
         params = {
           'type' => 'array',
           'minItems' => array.size,
+          'maxItems' => array.size,
           'items' => {},
         }
 

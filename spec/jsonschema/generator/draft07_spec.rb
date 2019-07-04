@@ -37,6 +37,7 @@ RSpec.describe Jsonschema::Generator::Draft07 do
           'title' => 'Root',
           'type' => 'array',
           'minItems' => 2,
+          'maxItems' => 2,
           'items' => {
             'type' => 'object',
             'properties' => {
@@ -49,6 +50,7 @@ RSpec.describe Jsonschema::Generator::Draft07 do
               'roles' => {
                 'type' => 'array',
                 'minItems' => 1,
+                'maxItems' => 1,
                 'items' => {
                   'type' => 'object',
                   'properties' => {
@@ -284,6 +286,7 @@ RSpec.describe Jsonschema::Generator::Draft07 do
             'friends' => {
               'type' => 'array',
               'minItems' => 3,
+              'maxItems' => 3,
               'items' => {
                 'type' => 'object',
                 'required' => %w[id name],
@@ -330,6 +333,7 @@ RSpec.describe Jsonschema::Generator::Draft07 do
             'tags' => {
               'type' => 'array',
               'minItems' => 7,
+              'maxItems' => 7,
               'items' => {
                 'type' => 'string',
               },
