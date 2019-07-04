@@ -52,7 +52,11 @@ module Jsonschema
       end
 
       def generate_array(array)
-        params = { 'items' => {}, 'type' => 'array' }
+        params = {
+          'type' => 'array',
+          'minItems' => array.size,
+          'items' => {},
+        }
 
         array.each_with_object(params) do |elem, memo|
           memo['items'].merge!(generate(elem))
