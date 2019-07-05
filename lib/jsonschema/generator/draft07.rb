@@ -41,9 +41,9 @@ module Jsonschema
 
       def generate_object(hash)
         params = {
-          'properties' => {},
           'type' => 'object',
           'required' => hash.keys,
+          'properties' => {},
         }
 
         hash.each_with_object(params) do |(key, value), memo|
